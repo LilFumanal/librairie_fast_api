@@ -9,7 +9,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 
 class Client(Base):
-    __tablename__ = "client"
+    __tablename__ = "clients"
     id_client: Mapped[int] = mapped_column(primary_key=True)
     nom_client: Mapped[str] =  mapped_column(String(255))
     prenom_client: Mapped[Optional[str]] =  mapped_column(String(255))
