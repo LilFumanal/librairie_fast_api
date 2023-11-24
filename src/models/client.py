@@ -13,9 +13,9 @@ class Client(Base):
     prenom_client: Mapped[Optional[str]] =  mapped_column(String(255))
     email_client: Mapped[str] = mapped_column(String(255))
     telephone_client: Mapped[str] =  mapped_column(String(20))
-    preferences_client: Mapped[str] =  mapped_column String
-    adresse_livraison_client: Mapped[str] =  mapped_column String
-    adresse_facturation_client: Mapped[str] =  mapped_column String
+    preferences_client: Mapped[Optional[str]] =  mapped_column(String(255))
+    adresse_livraison_client: Mapped[Optional[str]] =  mapped_column(String(255))
+    adresse_facturation_client: Mapped[Optional[str]] =  mapped_column(String(255))
     
     
 
