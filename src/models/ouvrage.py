@@ -7,7 +7,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session, rela
 
 class Ouvrage(Base):
     __tablename__ = "t_ouvrage"
-    id_ouvrage: Mapped[int] = mapped_column(primary_key=True)
+    id_ouvrage: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     titre_ouvrage: Mapped[str] = mapped_column(String(255))
     auteur_ouvrage: Mapped[str] = mapped_column(String(255))
     isbn_ouvrage: Mapped[str] = mapped_column(String(20))

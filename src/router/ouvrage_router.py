@@ -21,3 +21,6 @@ def get_ouvrage_by_isbn(db: Session, ouvrage_isbn: str):
 @app.get("/ouvrage", response_model=list[ouvrage_schema.Ouvrage])
 def get_ouvrages(db: Session, skip: int = 0, limit: int = 100):
   return db.query(Ouvrage).offset(skip).limit(limit).all()
+
+@app.post("/ouvrage", response_model=ouvrage_schema.CreateOuvrage)
+def post_ouvrage(db: Session, )
