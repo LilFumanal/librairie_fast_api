@@ -6,27 +6,35 @@
 #   db.refresh(db_ouvrage)
 #   return db_ouvrage
 
-from fastapi import APIRouter, FastAPI
+from fastapi import APIRouter, Depends, FastAPI
+from config import connexion
 from models import Commentaire
 from schema import commentaire_schema
 from sqlalchemy.orm import Session
 
-app = APIRouter
+app = APIRouter()
+
+def get_db():
+  db = connexion.SessionLocal()
+  try:
+    yield db
+  finally:
+    db.close()
 
 @app.get("/commentaire/{commentaire.id}", response_model=commentaire_schema.Commentaire)
-def get_commentaire_by_id(db: Session, commentaire_id: int):
+def get_commentaire_by_id(commentaire_id: int, db: Session = Depends(get_db)):
     return db.query(Commentaire).filter(Commentaire.id_commentaire == commentaire_id).first()       #Get commentaire via id du commentaire
 
 @app.get("/commentaire/{ouvrage.id}", response_model=commentaire_schema.Commentaire)
-def get_commentaire_by_ouvrage(db: Session, ouvrage_id: int):
+def get_commentaire_by_ouvrage(ouvrage_id: int, db: Session = Depends(get_db)):
     return db.query(Commentaire).filter(Commentaire.id_ouvrage == ouvrage_id).first()       #Get commentaire via id ouvrage
 
 @app.get("/commentaire/{client.id}", response_model=commentaire_schema.Commentaire)
-def get_commentaire_by_client(db: Session, client_id: int):
+def get_commentaire_by_client(client_id: int, db: Session = Depends(get_db)):
     return db.query(Commentaire).filter(Commentaire.id_client == client_id).first()         #Get commentaire via id client
 
 @app.post("/commentaire", response_model=commentaire_schema.CreateCommentaire)
-def post_commentaire(db: Session, commentaire: commentaire_schema.CreateCommentaire):
+def post_commentaire(commentaire: commentaire_schema.CreateCommentaire, db: Session = Depends(get_db)):
     db_commentaire = Commentaire(date = commentaire.date_publication_commentaire, com = commentaire.commentaire, titre = commentaire.titre_commentaire)     #Créer un commentaire
     db.add(db_commentaire)
     db.commit()

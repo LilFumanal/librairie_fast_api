@@ -20,3 +20,4 @@ class Ouvrage(BaseModel):
     orm_mode = True
 class CreateOuvrage(Ouvrage):
   id: int
+  commentaire: list[commentaire_schema.Commentaire]
