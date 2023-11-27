@@ -1,6 +1,6 @@
 ./src/config/
-./src/pycache/
-./src/config/pycache/
-./src/router/pycache/
-./src/schema/pycache/
-./src/models/pycache/
+./src/__pycache__/
+./src/config/__pycache__/
+./src/router/__pycache__/
+./src/schema/__pycache__/
+./src/models/__pycache__/
