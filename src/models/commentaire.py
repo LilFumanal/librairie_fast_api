@@ -1,6 +1,6 @@
 from datetime import date
 from config import Base
-from sqlalchemy import ForeignKey, select, String, Text, Date, Numeric
+from sqlalchemy import ForeignKey, select, String, Text, Date
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session, relationship
 
 class Commentaire:
