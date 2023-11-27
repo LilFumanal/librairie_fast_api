@@ -16,9 +16,8 @@ class Ouvrage(BaseModel):
   mot_clef: str
   description: str
   
+  class Config:
+    orm_mode = True
 class CreateOuvrage(Ouvrage):
   id: int
   commentaire: list[Commentaire]
-  
-  class Config:
-    orm_mode = True

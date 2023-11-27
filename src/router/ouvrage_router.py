@@ -23,4 +23,9 @@ def get_ouvrages(db: Session, skip: int = 0, limit: int = 100):
   return db.query(Ouvrage).offset(skip).limit(limit).all()
 
 @app.post("/ouvrage", response_model=ouvrage_schema.CreateOuvrage)
-def post_ouvrage(db: Session, )
+def post_ouvrage(db: Session, ouvrage: ouvrage_schema.CreateOuvrage):
+  db_ouvrage = Ouvrage(titre = ouvrage.titre, auteur = ouvrage.auteur, isbn = ouvrage.isbn, langue = ouvrage.langue, prix = ouvrage.prix, date_parution = ouvrage.date_parution, categorie = ouvrage.categorie, date_dispo_librairie = ouvrage.date_dispo_librairie, date_dispo_particulier = ouvrage.date_dispo_particulier, table_matières = ouvrage.table_matieres, mot_clef = ouvrage.mot_clef, description = ouvrage.description )
+  db.add(db_ouvrage)
+  db.commit()
+  db.refresh(db_ouvrage)
+  return db_ouvrage

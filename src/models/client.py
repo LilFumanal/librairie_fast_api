@@ -1,5 +1,4 @@
 from config import Base
-<<<<<<< Updated upstream
 from typing import Optional
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -21,24 +20,3 @@ class Client(Base):
     
     
 
-=======
-from config import connexion as c
-
-
-class Client(Base):
-    pass
-
-
-
-
-# CREATE TABLE Client (
-#     id_client INT PRIMARY KEY AUTO_INCREMENT,
-#     nom_client VARCHAR(255),
-#     prenom_client VARCHAR(255),
-#     email_client VARCHAR(255),
-#     telephone_client VARCHAR(20),
-#     preferences_client TEXT,
-#     adresse_livraison_client TEXT,
-#     adresse_facturation_client TEXT
-# );
->>>>>>> Stashed changes
