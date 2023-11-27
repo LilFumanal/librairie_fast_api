@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from . import commentaire_schema
 
-
 class Client(BaseModel):
     nom: str
     prenom: str
@@ -14,6 +13,5 @@ class Client(BaseModel):
     class Config:
      orm_mode = True
 
-class CreateClient(Client):
+class CreateOuvrage(Ouvrage):
   id: int
-  commentaire: list[Commentaire]
