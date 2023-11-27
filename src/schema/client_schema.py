@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from . import commentaire_schema
 
 
 class Client(BaseModel):
@@ -9,3 +10,10 @@ class Client(BaseModel):
     preferences: str
     adresse_livraison: str
     adresse_facturation: str
+    
+    class Config:
+     orm_mode = True
+
+class CreateClient(Client):
+  id: int
+  commentaire: list[Commentaire]
