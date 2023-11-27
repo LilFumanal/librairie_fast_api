@@ -17,7 +17,3 @@ class Client(Base):
     preferences_client: Mapped[Optional[str]] =  mapped_column(Text())
     adresse_livraison_client: Mapped[Optional[str]] =  mapped_column(Text())
     adresse_facturation_client: Mapped[Optional[str]] =  mapped_column(Text())
-    
-    
-
-pouet
