@@ -1,7 +1,6 @@
-from models import Client, Ouvrage
 from datetime import date
 from config import Base
-from sqlalchemy import ForeignKey, select, String, Text
+from sqlalchemy import ForeignKey, select, String, Text, Date, Numeric
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session, relationship
 
 class Commentaire:
@@ -11,7 +10,7 @@ class Commentaire:
     commentaires: Mapped["Client"] = relationship(back_populates="commentaires_client") #Relationship Client
     id_ouvrage: Mapped[int] = mapped_column(ForeignKey("ouvrage.id_ouvrage"))   #Clé étrangère Ouvrage
     ouvrage: Mapped["Ouvrage"] = relationship(back_populates="commentaires_ouvrage")    #Relationship Ouvrage
-    date_publication_commentaire: Mapped[date] = mapped_column(date)
+    date_publication_commentaire: Mapped[date] = mapped_column(Date)
     commentaire: Mapped[str] = mapped_column(Text)
     titre_commentaire: Mapped[str] = mapped_column(String(255))
 
