@@ -4,7 +4,7 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 # connexion à la base de donnée
 connector = "mysql+pymysql"
 user = "root"
-password = ""
+password = "root"
 host = "localhost"
 database = "librairie"
 
