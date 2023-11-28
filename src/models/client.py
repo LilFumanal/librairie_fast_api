@@ -1,8 +1,9 @@
 from config import Base
 from typing import Optional
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import Text
+from sqlalchemy import Text
+from sqlalchemy.orm import Mapped, mapped_column
 
 
 
@@ -14,6 +15,15 @@ class Client(Base):
     prenom_client: Mapped[Optional[str]] =  mapped_column(String(255))
     email_client: Mapped[str] = mapped_column(String(255))
     telephone_client: Mapped[str] =  mapped_column(String(20))
+<<<<<<< HEAD
     preferences_client: Mapped[Optional[str]] =  mapped_column(Text())
     adresse_livraison_client: Mapped[Optional[str]] =  mapped_column(Text())
     adresse_facturation_client: Mapped[Optional[str]] =  mapped_column(Text())
+=======
+    preferences_client: Mapped[str] =  mapped_column(Text)
+    adresse_livraison_client: Mapped[str] =  mapped_column(Text)
+    adresse_facturation_client: Mapped[Text] =  mapped_column(Text)
+    
+    
+
+>>>>>>> Pierrick
