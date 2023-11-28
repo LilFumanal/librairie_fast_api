@@ -2,16 +2,16 @@ from pydantic import BaseModel
 from . import commentaire_schema
 
 class Client(BaseModel):
-    nom: str
-    prenom: str
-    email: str
-    telephone: str
-    preferences: str
-    adresse_livraison: str
-    adresse_facturation: str
+    nom_client: str
+    prenom_client: str
+    email_client: str
+    telephone_client: str
+    preferences_client: str
+    adresse_livraison_client: str
+    adresse_facturation_client: str
     
     class Config:
-     orm_mode = True
+      orm_mode = True
 
-class CreateOuvrage(Ouvrage):
-  id: int
+class CreatedClient(Client):
+  id_client: int

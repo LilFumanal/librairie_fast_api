@@ -21,21 +21,21 @@ def get_db():
   finally:
     db.close()
 
-@app.get("/commentaire/{commentaire.id}", response_model=commentaire_schema.Commentaire)
+@app.get("/commentaire/{commentaire.id}", response_model=commentaire_schema.CreatedCommentaire)
 def get_commentaire_by_id(commentaire_id: int, db: Session = Depends(get_db)):
     return db.query(Commentaire).filter(Commentaire.id_commentaire == commentaire_id).first()       #Get commentaire via id du commentaire
 
-@app.get("/commentaire/{ouvrage.id}", response_model=commentaire_schema.Commentaire)
+@app.get("/commentaire/{ouvrage.id}", response_model=commentaire_schema.CreatedCommentaire)
 def get_commentaire_by_ouvrage(ouvrage_id: int, db: Session = Depends(get_db)):
     return db.query(Commentaire).filter(Commentaire.id_ouvrage == ouvrage_id).first()       #Get commentaire via id ouvrage
 
-@app.get("/commentaire/{client.id}", response_model=commentaire_schema.Commentaire)
+@app.get("/commentaire/{client.id}", response_model=commentaire_schema.CreatedCommentaire)
 def get_commentaire_by_client(client_id: int, db: Session = Depends(get_db)):
     return db.query(Commentaire).filter(Commentaire.id_client == client_id).first()         #Get commentaire via id client
 
-@app.post("/commentaire", response_model=commentaire_schema.CreateCommentaire)
-def post_commentaire(commentaire: commentaire_schema.CreateCommentaire, db: Session = Depends(get_db)):
-    db_commentaire = Commentaire(date = commentaire.date_publication_commentaire, com = commentaire.commentaire, titre = commentaire.titre_commentaire)     #Créer un commentaire
+@app.post("/commentaire", response_model=commentaire_schema.Commentaire)
+def post_commentaire(commentaire: commentaire_schema.Commentaire, db: Session = Depends(get_db)):
+    db_commentaire = Commentaire(date_publication_commentaire = commentaire.date_publication_commentaire, commentaire = commentaire.commentaire, titre_commentaire = commentaire.titre_commentaire)     #Créer un commentaire
     db.add(db_commentaire)
     db.commit()
     db.refresh(db_commentaire)
